@@ -1,13 +1,23 @@
-import pptreader
+import PptKeywordAggregator
 import argparse
 
 
 def parse_args():
-    pass
+    """
+    Parses command-line arguments
+    :return: argparse.Namespace object containing arguments
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("ppt_dir_path", type=str, help="path to the directory containing ppt files")
+    parser.add_argument("excel_path", type=str, help="path to the excel file")
+    return parser.parse_args()
 
 
 def main():
-    parse_args()
+    args = parse_args()
+    aggregator = PptKeywordAggregator(args)
+    aggregator.run_program()
+
 
 
 if __name__ == "__main__":
