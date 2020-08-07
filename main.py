@@ -15,9 +15,8 @@ def parse_args():
 
 def main():
     args = parse_args()
-    aggregator = PptKeywordAggregator(args)
+    aggregator = PptKeywordAggregator.PptKeywordAggregator(args)
     aggregator.run_program()
-
 
 
 if __name__ == "__main__":

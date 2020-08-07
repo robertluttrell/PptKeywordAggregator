@@ -16,12 +16,14 @@ class PptReader:
         :return: list of paths
         """
         ppt_path_list = []
+        curDir = os.getcwd()
 
         os.chdir(ppt_dir_path)
         for file in os.listdir(ppt_dir_path):
             if file.endswith(".pptx"):
                 ppt_path_list.append(os.path.join(ppt_dir_path, file))
 
+        os.chdir(curDir)
         return ppt_path_list
 
     @staticmethod
