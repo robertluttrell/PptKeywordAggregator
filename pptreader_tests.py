@@ -6,19 +6,20 @@ import os
 class TestPptReader(unittest.TestCase):
 
     def test_GetPptPathList_EmptyDir_EmptyArray(self):
-        path_list = pptreader.PptReader.get_ppt_path_list(os.getcwd() + os.path.sep + "testdir2")
+        path_list = pptreader.PptReader.get_ppt_path_list(os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir2")
         self.assertListEqual(path_list, [])
 
     def test_GetPptPathList_PptsInDir_ExactArray(self):
-        path_list = pptreader.PptReader.get_ppt_path_list(os.getcwd() + os.path.sep + "testdir1")
+        path_list = pptreader.PptReader.get_ppt_path_list(os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir1")
         self.assertEqual(len(path_list), 3)
-        self.assertListEqual(path_list, [os.getcwd() + os.path.sep + "testdir1" + os.path.sep + "Presentation1.pptx",
-                                         os.getcwd() + os.path.sep + "testdir1" + os.path.sep + "Presentation2.pptx",
-                                         os.getcwd() + os.path.sep + "testdir1" + os.path.sep + "Presentation3.pptx"])
+        self.assertListEqual(path_list,
+                             [os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir1" + os.path.sep + "Presentation1.pptx",
+                              os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir1" + os.path.sep + "Presentation2.pptx",
+                              os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir1" + os.path.sep + "Presentation3.pptx"])
 
     def test_GetPptPathList_EmptyDir_WorkingDirUnmodified(self):
         orig_path = os.getcwd()
-        pptreader.PptReader.get_ppt_path_list(os.getcwd() + os.path.sep + "testdir1")
+        pptreader.PptReader.get_ppt_path_list(os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir1")
         self.assertEqual(os.getcwd(), orig_path)
 
     def test_GetPptPathList_NonexistentDir_RaisesException(self):
