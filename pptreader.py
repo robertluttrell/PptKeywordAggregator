@@ -7,7 +7,7 @@ class PptReader:
 
     def __init__(self, ppt_dir_path):
         self.ppt_dir_path = ppt_dir_path
-        self.df = None
+        self.occur_dict = None
 
     @staticmethod
     def get_ppt_path_list(ppt_dir_path):
@@ -27,18 +27,18 @@ class PptReader:
         return ppt_path_list
 
     @staticmethod
-    def ppt_files_to_df(ppt_path_list):
+    def ppt_files_to_dict(ppt_path_list):
         """
-        For each file specified in ppt_path_list, reads the file and stores keyword data in a new DataFrame
+        For each file specified in ppt_path_list, reads the file and stores keyword data in new dict
         :param ppt_path_list: List of strings specifying the powerpoint files to be processed
         :return: df: DataFrame containing keyword data and metadata
         """
-        df = pd.DataFrame()
-        return df
+        occur_dict = {}
+        return occur_dict
 
-    def read_files_to_df(self):
+    def read_files_to_dict(self):
         """
-        Reads each ppt file and saves the data and metadata to self.df
+        Reads each ppt file and saves the data and metadata to self.occur_dict
         """
         ppt_path_list = self.get_ppt_path_list(self.ppt_dir_path)
-        self.df = self.ppt_files_to_df(ppt_path_list)
+        self.occur_dict = self.ppt_files_to_dict(ppt_path_list)
