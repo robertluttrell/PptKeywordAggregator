@@ -2,6 +2,7 @@ import os
 from pptx import Presentation
 from KeywordFilePresence import KeywordFilePresence
 
+
 class PptReader:
 
     def __init__(self, ppt_dir_path):
@@ -15,14 +16,14 @@ class PptReader:
         :return: list of paths
         """
         ppt_path_list = []
-        curDir = os.getcwd()
+        cur_dir = os.getcwd()
 
         os.chdir(ppt_dir_path)
         for file in os.listdir(ppt_dir_path):
             if file.endswith(".pptx"):
                 ppt_path_list.append(os.path.join(ppt_dir_path, file))
 
-        os.chdir(curDir)
+        os.chdir(cur_dir)
         return ppt_path_list
 
     def keyword_file_presence_exists(self, keyword, file_path):
@@ -75,7 +76,6 @@ class PptReader:
         for keyword in slide_keyword_list:
             self.process_keyword(keyword, index, file_path)
 
-
     def ppt_file_to_dict(self, file_path):
         """
         Reads the file and stores keyword data in self.word_dict
@@ -92,7 +92,7 @@ class PptReader:
         file.close()
 
         for i in range(len(pres.slides)):
-            self.process_slide(pres.slides[i], i, file_path)
+            self.process_slide(pres.slides[i], i + 1, file_path)
 
     def ppt_files_to_dict(self, ppt_path_list):
         """
