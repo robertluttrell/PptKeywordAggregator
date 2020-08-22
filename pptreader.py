@@ -6,7 +6,7 @@ class PptReader:
 
     def __init__(self, ppt_dir_path):
         self.ppt_dir_path = ppt_dir_path
-        self.word_dict = None
+        self.word_dict = {}
 
     @staticmethod
     def get_ppt_path_list(ppt_dir_path):
@@ -67,7 +67,11 @@ class PptReader:
         if not slide.has_notes_slide:
             return
 
-        slide_keyword_list = slide.notes_slide.notes_text_frame.text.split(',').strip(' ')
+        slide_keyword_list = slide.notes_slide.notes_text_frame.text.split(',')
+
+        for i in range(len(slide_keyword_list)):
+            slide_keyword_list[i] = slide_keyword_list[i].strip(' ')
+
         for keyword in slide_keyword_list:
             self.process_keyword(keyword, index, file_path)
 
@@ -78,9 +82,10 @@ class PptReader:
         :param file_path: String path to the file to be read
         """
         try:
-            file = open(r"file_path", "rb")
+            file = open(file_path, "rb")
 
-        except IOError:
+        except IOError as e:
+            print(e)
             return
 
         pres = Presentation(file)
@@ -93,8 +98,10 @@ class PptReader:
         """
         For each file specified in ppt_path_list, reads the file and stores keyword data in self.word_dict
         :param ppt_path_list: List of strings specifying the powerpoint files to be processed
-        :return: df: DataFrame containing keyword data and metadata
         """
+        if len(ppt_path_list) == 0:
+            return
+
         for file_path in ppt_path_list:
             self.ppt_file_to_dict(file_path)
 

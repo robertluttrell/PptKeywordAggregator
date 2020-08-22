@@ -26,25 +26,33 @@ class TestPptReader(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             pptreader.PptReader.get_ppt_path_list(os.getcwd() + "NonexistentDirPath")
 
-    def test_PptFilesToDict_EmptyList_ReturnsEmptyDict(self):
+    def test_PptFilesToDict_EmptyList_CreatesEmptyDict(self):
         path_list = []
-        occur_dict = pptreader.PptReader.ppt_files_to_dict(path_list)
-        self.assertEqual({}, occur_dict)
+        reader = pptreader.PptReader("")
+        reader.ppt_files_to_dict(path_list)
+        self.assertEqual({}, reader.word_dict)
 
-    def test_PptFilesToDict_NoKeywords_ReturnsEmptyDict(self):
+    def test_PptFilesToDict_NoKeywords_CreatesEmptyDict(self):
         test_dir_path = os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir1"
         path_list = self.get_ppt_file_list(test_dir_path)
+        reader = pptreader.PptReader("")
 
-        occur_dict = pptreader.PptReader.ppt_files_to_dict(path_list)
+        reader.ppt_files_to_dict(path_list)
+
         self.assertTrue(len(path_list) > 0)
-        self.assertEqual({}, occur_dict)
+        self.assertEqual({}, reader.word_dict)
 
     def test_PptFilesToDict_MultipleKeywords_ReturnsCorrectCount(self):
         test_dir_path = os.getcwd() + os.path.sep + "Test" + os.path.sep + "testdir3"
         path_list = self.get_ppt_file_list(test_dir_path)
+        reader = pptreader.PptReader("")
 
-        occur_dict = pptreader.PptReader.ppt_files_to_dict(path_list)
-        self.assertEqual(3, len(occur_dict))
+        reader.ppt_files_to_dict(path_list)
+
+        self.assertEqual(4, len(reader.word_dict))
+        print(reader.word_dict.keys())
+        self.assertTrue("Keyword3" in reader.word_dict.keys())
+        self.assertTrue("Keyword4 Keyword5" in reader.word_dict.keys())
 
     @staticmethod
     def get_ppt_file_list(dir_path):
