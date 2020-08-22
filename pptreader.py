@@ -35,7 +35,7 @@ class PptReader:
         """
         keyword_kfp_list = self.word_dict[keyword]
         for kfp in keyword_kfp_list:
-            if kfp.get_file_path() == file_path:
+            if kfp.file_path == file_path:
                 return True
 
         return False
@@ -104,10 +104,3 @@ class PptReader:
 
         for file_path in ppt_path_list:
             self.ppt_file_to_dict(file_path)
-
-    def read_files_to_dict(self):
-        """
-        Reads each ppt file and saves the data and metadata to self.occur_dict
-        """
-        ppt_path_list = self.get_ppt_path_list(self.ppt_dir_path)
-        self.ppt_files_to_dict(ppt_path_list)

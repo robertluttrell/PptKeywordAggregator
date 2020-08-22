@@ -13,6 +13,3 @@ class KeywordFilePresence:
     def add_index(self, index):
         self.index_list.append(index)
         self.num_instances += 1
-
-    def get_file_path(self):
-        return self.file_path
