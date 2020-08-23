@@ -1,4 +1,4 @@
-import PptKeywordAggregator
+import pptkeywordaggregator
 import argparse
 
 
@@ -15,7 +15,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    aggregator = PptKeywordAggregator.PptKeywordAggregator(args)
+    aggregator = pptkeywordaggregator.PptKeywordAggregator(args)
     aggregator.run_program()
 
 

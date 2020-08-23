@@ -1,6 +1,6 @@
 import os
 from pptx import Presentation
-from KeywordFilePresence import KeywordFilePresence
+from keywordfilepresence import KeywordFilePresence
 
 
 class PptReader:

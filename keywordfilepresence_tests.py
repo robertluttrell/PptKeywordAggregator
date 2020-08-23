@@ -1,7 +1,5 @@
 import unittest
-import pptreader
-import os
-import KeywordFilePresence as kfp
+import keywordfilepresence as kfp
 
 
 class TestPptReader(unittest.TestCase):
