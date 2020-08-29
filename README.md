@@ -18,7 +18,7 @@ PptKeywordAggregator reads keywords from PowerPoint presentations and organizes 
 3. Run `pip install openpyxl` in your bash/commandline
 4. Run the program using
 ```
-main.py <ppt_dir_path> <excel_file_path>
+python3 main.py <ppt_dir_path> <excel_file_path>
 ```
 The program will process all files ending in `.pptx` in `<ppt_dir_path>` and save the keyword data to a new spreadsheet at `<excel_file_path>`.
 
