@@ -69,10 +69,19 @@ class PptReader:
         :param index: Index of slide in powerpoint presentation starting from 1
         :param file_path: String representing path to the PowerPoint presentation containing the slide
         """
-        if not slide.has_notes_slide:
+        keyword_text = None
+
+        for shape in slide.shapes:
+            print("in loop")
+            if hasattr(shape, "text") and shape.text.startswith("Keyword"):
+                print("Found")
+                keyword_text = shape.text.split(':', 1)[-1]
+                break
+
+        if keyword_text is None:
             return
 
-        slide_keyword_list = self.remove_empty_strings(slide.notes_slide.notes_text_frame.text.split(','))
+        slide_keyword_list = self.remove_empty_strings(keyword_text.split(','))
 
         for i in range(len(slide_keyword_list)):
             slide_keyword_list[i] = slide_keyword_list[i].strip(' ')
