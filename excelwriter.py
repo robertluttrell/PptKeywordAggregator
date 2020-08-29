@@ -7,7 +7,7 @@ class ExcelWriter:
     def __init__(self, excel_path, word_dict):
         self.excel_path = excel_path
         self.word_dict = word_dict
-        self.column_map = {"Keyword": 'A', "Filename": 'B', "Count": 'C', "Filepath": 'D', "Slide Indices": 'E'}
+        self.column_map = {"Keyword": 'A', "Filename": 'B', "Count": 'C', "Slide Indices": 'D', "Filepath": 'E'}
         self.workbook = Workbook()
         self.ws = self.workbook.active
         self.label_row_index = 1
