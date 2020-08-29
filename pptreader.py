@@ -72,9 +72,7 @@ class PptReader:
         keyword_text = None
 
         for shape in slide.shapes:
-            print("in loop")
             if hasattr(shape, "text") and shape.text.startswith("Keyword"):
-                print("Found")
                 keyword_text = shape.text.split(':', 1)[-1]
                 break
 
