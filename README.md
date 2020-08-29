@@ -10,6 +10,7 @@ PptKeywordAggregator reads keywords from the notes section of a Powerpoint file 
     - Filename it was found in (one filename per Excel row entry)
     - Count of occurrences of the keyword in the specified Number of occurrences of the word in the specified presentation
     - Indices of each slide the keyword was found in for the specific presentation
+- Supports both Windows and Unix-based operating systems (MacOS and Linux)
     
 ## Running the Project
 1. Clone this project locally
