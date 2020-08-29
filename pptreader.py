@@ -58,6 +58,10 @@ class PptReader:
 
         word_dict_entry[-1].add_index(index)
 
+    @staticmethod
+    def remove_empty_strings(string_list):
+        return list(filter(None, string_list))
+
     def process_slide(self, slide, index, file_path):
         """
         Reads a slide and stores keyword data in self.word_dict if a populated notes slide exists
@@ -68,7 +72,7 @@ class PptReader:
         if not slide.has_notes_slide:
             return
 
-        slide_keyword_list = slide.notes_slide.notes_text_frame.text.split(',')
+        slide_keyword_list = self.remove_empty_strings(slide.notes_slide.notes_text_frame.text.split(','))
 
         for i in range(len(slide_keyword_list)):
             slide_keyword_list[i] = slide_keyword_list[i].strip(' ')
