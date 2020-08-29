@@ -15,7 +15,9 @@ class ExcelWriter:
 
     def label_columns(self):
         for label in self.column_map.keys():
-            self.ws[self.column_map[label] + str(self.label_row_index)] = label
+            cell = self.ws[self.column_map[label] + str(self.label_row_index)]
+            cell.font = cell.font.copy(bold=True)
+            cell.value = label
 
         self.last_filled_row_index = self.label_row_index
 
