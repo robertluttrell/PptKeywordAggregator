@@ -1,4 +1,5 @@
 from openpyxl import Workbook
+from openpyxl.styles import Font
 
 
 class ExcelWriter:
@@ -16,7 +17,7 @@ class ExcelWriter:
     def label_columns(self):
         for label in self.column_map.keys():
             cell = self.ws[self.column_map[label] + str(self.label_row_index)]
-            cell.font = cell.font.copy(bold=True)
+            cell.font = Font(bold=True)
             cell.value = label
 
         self.last_filled_row_index = self.label_row_index
