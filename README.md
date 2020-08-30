@@ -16,7 +16,8 @@ PptKeywordAggregator reads keywords from PowerPoint presentations and organizes 
 1. Clone this project locally
 2. Run `pip install python-pptx` in your bash/commandline
 3. Run `pip install openpyxl` in your bash/commandline
-4. Run the program using
+4. cd into the directory `PptKeywordAggregator`
+5. Run the program using
 ```
 python3 main.py <ppt_dir_path> <excel_file_path>
 ```
