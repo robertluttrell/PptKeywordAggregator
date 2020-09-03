@@ -82,7 +82,7 @@ class PptReader:
         slide_keyword_list = self.remove_empty_strings(keyword_text.split(','))
 
         for i in range(len(slide_keyword_list)):
-            slide_keyword_list[i] = slide_keyword_list[i].strip(' ')
+            slide_keyword_list[i] = slide_keyword_list[i].strip(' ').replace('\n', '')
 
         for keyword in slide_keyword_list:
             self.process_keyword(keyword, index, file_path)

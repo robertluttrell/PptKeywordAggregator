@@ -67,6 +67,19 @@ class TestPptReader(unittest.TestCase):
 
         self.assertEqual(expected_dict, reader.word_dict)
 
+    def test_PptFilesToDict_ContainsNewline_NoNewlineInWordDict(self):
+        test_dir_path = os.getcwd() + os.path.sep + "Test" + os.path.sep + "NewlineChars"
+        path_list = self.get_ppt_file_list(test_dir_path)
+        reader = pptreader.PptReader("")
+        reader.ppt_files_to_dict(path_list)
+
+        contains_newline = False
+        for key in reader.word_dict.keys():
+            if '\n' in key:
+                contains_newline = True
+
+        self.assertFalse(contains_newline)
+
     @staticmethod
     def get_ppt_file_list(dir_path):
         path_list = []
