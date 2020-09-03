@@ -8,8 +8,10 @@ def parse_args():
     :return: argparse.Namespace object containing arguments
     """
     parser = argparse.ArgumentParser()
+
     parser.add_argument("ppt_dir_path", type=str, help="path to the directory containing ppt files")
     parser.add_argument("excel_path", type=str, help="path to the excel file")
+    parser.add_argument("-gui", action="store_true", help="GUI flag")
     return parser.parse_args()
 
 
