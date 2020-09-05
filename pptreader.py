@@ -5,26 +5,9 @@ from keywordfilepresence import KeywordFilePresence
 
 class PptReader:
 
-    def __init__(self, ppt_dir_path):
-        self.ppt_dir_path = ppt_dir_path
+    def __init__(self, ppt_path_list):
+        self.ppt_path_list = ppt_path_list
         self.word_dict = {}
-
-    @staticmethod
-    def get_ppt_path_list(ppt_dir_path):
-        """
-        Creates a list of paths to all the powerpoint files in self.ppt_dir_path
-        :return: list of paths
-        """
-        ppt_path_list = []
-        cur_dir = os.getcwd()
-
-        os.chdir(ppt_dir_path)
-        for file in os.listdir(ppt_dir_path):
-            if file.endswith(".pptx"):
-                ppt_path_list.append(os.path.join(ppt_dir_path, file))
-
-        os.chdir(cur_dir)
-        return ppt_path_list
 
     def keyword_file_presence_exists(self, keyword, file_path):
         """
@@ -105,13 +88,12 @@ class PptReader:
         for i in range(len(pres.slides)):
             self.process_slide(pres.slides[i], i + 1, file_path)
 
-    def ppt_files_to_dict(self, ppt_path_list):
+    def ppt_files_to_dict(self):
         """
         For each file specified in ppt_path_list, reads the file and stores keyword data in self.word_dict
-        :param ppt_path_list: List of strings specifying the powerpoint files to be processed
         """
-        if len(ppt_path_list) == 0:
+        if len(self.ppt_path_list) == 0:
             return
 
-        for file_path in ppt_path_list:
+        for file_path in self.ppt_path_list:
             self.ppt_file_to_dict(file_path)
